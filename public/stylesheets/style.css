@@ -1,0 +1,7 @@
+.messages {
+  padding: 1rem; /* p-4 */
+  overflow-y: auto; /* overflow-y-auto */
+  height: calc(100vh - 2rem); /* Full viewport height minus padding */
+  width: 100%;
+  margin: 0;
+}

@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+  .max-w-md.mx-auto.mt-10
+    h2.text-2xl.font-bold.mb-4=title
+    form(method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id='createGroupForm')
+      .mb-4
+        label.block.text-gray-700.text-sm.font-bold.mb-2(for="groupName") Group Name
+        input#groupName(type="text" name="groupName" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value=(group ? group.name : ''))
+      .mb-4
+        label.block.text-gray-700.text-sm.font-bold.mb-2(for="secretKey") Secret Key
+        input#secretKey(type="text" name="secretKey" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value=(group ? group.secretKey : ''))
+      .mb-4
+        label.block.text-gray-700.text-sm.font-bold.mb-2(for="isAdmin")
+          input#isAdmin(type="checkbox" disabled checked name="isAdmin" class="mr-2 leading-tight focus:outline-none focus:shadow-outline")
+          | I am an Admin
+      .flex.items-center.justify-between
+        button(type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Submit
+
+        a(href="/dashboard" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Home
+
+
