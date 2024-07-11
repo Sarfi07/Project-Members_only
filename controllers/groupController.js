@@ -71,20 +71,24 @@ exports.verifySecretKey = asyncHandler(async (req, res, next) => {
     }
 
     if (group.secretKey !== secretKey) {
-      return res.status(401).json({ message: "Invalid secret key" });
-    }
-
-    if (!group.members.includes(req.user.id)) {
-      group.members.push(req.user.id);
-      user.groups.push(group._id);
-      await group.save();
-      await user.save();
-      console.log("reached");
-      res.redirect("/dashboard");
+      res.render("error", {
+        title: "Error",
+        message: "Invalid secret key",
+        error: new Error("Invalid Secret key"),
+      });
     } else {
-      res
-        .status(400)
-        .json({ message: "User is already a member of the group" });
+      if (!group.members.includes(req.user.id)) {
+        group.members.push(req.user.id);
+        user.groups.push(group._id);
+        await group.save();
+        await user.save();
+        console.log("reached");
+        res.redirect("/dashboard");
+      } else {
+        res
+          .status(400)
+          .json({ message: "User is already a member of the group" });
+      }
     }
   } catch (error) {
     console.error("Error verifying secret key and adding user:", error);
