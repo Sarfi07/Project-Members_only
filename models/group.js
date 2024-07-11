@@ -14,10 +14,15 @@ const GroupSchema = new Schema(
       },
     ],
     secretKey: { type: String, required: true },
+    messages: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   },
   {
     timestamps: true,
   }
 );
+
+GroupSchema.virtual("url").get(function () {
+  return `/groups/${this._id}`;
+});
 
 module.exports = mongoose.model("Group", GroupSchema);

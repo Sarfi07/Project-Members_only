@@ -20,9 +20,10 @@ exports.sendMessage = asyncHandler(async (req, res, next) => {
     author: req.user,
     group: group,
   });
-
   try {
     await message.save();
+    group.messages.push(message._id);
+    await group.save();
   } catch (err) {
     return next(err);
   }

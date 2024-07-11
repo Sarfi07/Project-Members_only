@@ -5,7 +5,19 @@ const Message = require("../models/message");
 const User = require("../models/user");
 
 exports.index = asyncHandler(async (req, res, next) => {
-  const groups = await Group.find({ members });
+  // give all the groups of the user
+  const groups = await User.findById(req.user).populate("groups").exec();
+
+  if (groups) {
+    res.render("groupList", {
+      title: "Your Groups",
+      groups: groups,
+    });
+  } else {
+    res.render("groupList", {
+      title: "You have no groups. Create or Join One.",
+    });
+  }
 });
 exports.groups_create_get = asyncHandler(async (req, res, next) => {
   res.render("group_form", {
@@ -52,6 +64,7 @@ exports.verifySecretKey = asyncHandler(async (req, res, next) => {
 
   try {
     const group = await Group.findById(groupId);
+    const user = await User.findById(req.user.id);
 
     if (!group) {
       return res.status(404).json({ message: "Group not found" });
@@ -63,7 +76,9 @@ exports.verifySecretKey = asyncHandler(async (req, res, next) => {
 
     if (!group.members.includes(req.user.id)) {
       group.members.push(req.user.id);
+      user.groups.push(group._id);
       await group.save();
+      await user.save();
       console.log("reached");
       res.redirect("/dashboard");
     } else {
@@ -118,3 +133,36 @@ exports.groups_update_post = [
     }
   }),
 ];
+
+exports.group_get = asyncHandler(async (req, res, next) => {
+  // get the default group and its message and based on it the user is present in the members list of the group then show them message details
+
+  const default_group = await Group.findById(req.params.groupId);
+  // to create message with the correct group id
+
+  const messages = await Message.find({ group: default_group._id })
+    .populate("author")
+    .exec();
+
+  let added;
+
+  try {
+    added = await Group.findOne({
+      _id: default_group,
+      members: req.user,
+    });
+  } catch (err) {
+    return next(err);
+  }
+
+  let admin = default_group.admin.includes(req.user.id) ? true : false;
+
+  res.render("dashboard", {
+    currentUser: req.user,
+    groupName: default_group.name,
+    messages: messages,
+    group: default_group,
+    added: added ? true : false,
+    admin: admin,
+  });
+});

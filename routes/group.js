@@ -14,4 +14,6 @@ router.post("/:groupId/verifySecretKey", groupController.verifySecretKey);
 router.get("/:groupId/update", groupController.groups_update_get);
 router.post("/:groupId/update", groupController.groups_update_post);
 
+router.get("/:groupId", groupController.group_get);
+
 module.exports = router;
