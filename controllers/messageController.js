@@ -5,7 +5,7 @@ const Group = require("../models/group");
 exports.message_delete = asyncHandler(async (req, res, next) => {
   try {
     const message = await Message.findByIdAndDelete(req.params.id);
-    res.redirect("/dashboard");
+    res.redirect(`/groups/${message.group}`);
   } catch (err) {
     return next(err);
   }
@@ -27,5 +27,5 @@ exports.sendMessage = asyncHandler(async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-  res.redirect("/dashboard");
+  res.redirect(`/groups/${group._id}`);
 });

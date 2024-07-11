@@ -5,6 +5,15 @@ const Message = require("../models/message");
 const User = require("../models/user");
 
 exports.index = asyncHandler(async (req, res, next) => {
+  const groups = await Group.find({});
+
+  res.render("allGroups", {
+    title: "All Groups",
+    groups: groups,
+  });
+});
+
+exports.userGroups_get = asyncHandler(async (req, res, next) => {
   // give all the groups of the user
   const groups = await User.findById(req.user).populate("groups").exec();
 
@@ -161,7 +170,7 @@ exports.group_get = asyncHandler(async (req, res, next) => {
 
   let admin = default_group.admin.includes(req.user.id) ? true : false;
 
-  res.render("dashboard", {
+  res.render("group_page", {
     currentUser: req.user,
     groupName: default_group.name,
     messages: messages,

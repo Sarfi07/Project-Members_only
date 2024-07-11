@@ -4,6 +4,7 @@ const groupController = require("../controllers/groupController");
 const isAuthenticated = require("../utils/checkAuthentication");
 
 router.get("/", groupController.index);
+router.get("/userGroups", groupController.userGroups_get);
 
 router.get("/create", groupController.groups_create_get);
 

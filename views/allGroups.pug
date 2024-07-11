@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .container(style="max-width: 1200px; margin: 40px auto; padding: 0 20px; background-color: #f4f4f9;")
+    h1(style="font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 20px;")= title
+
+    ul
+    each group in groups 
+        li
+            a(href=`/groups/${group._id}`, style="font-size: 1.25rem; font-weight: 600; color: #1D4ED8; text-decoration: none; margin-bottom: 16px;")= group.name
