@@ -4,20 +4,25 @@ const Group = require("../models/group");
 const Message = require("../models/message");
 const User = require("../models/user");
 
+const db = require("../db/queries");
+
 exports.index = asyncHandler(async (req, res, next) => {
-  const groups = await Group.find({});
+  // const groups = await Group.find({});
+  const groups = await db.getAllGroups();
 
   res.render("allGroups", {
     title: "All Groups",
     groups: groups,
+    currentUser: req.user,
   });
 });
 
 exports.userGroups_get = asyncHandler(async (req, res, next) => {
   // give all the groups of the user
-  const groups = await User.findById(req.user).populate("groups").exec();
+  // const groups = await User.findById(req.user).populate("groups").exec();
+  const groups = await db.getUserGroups(req.user.id);
 
-  if (groups) {
+  if (groups.length) {
     res.render("groupList", {
       title: "Your Groups",
       groups: groups,
@@ -28,6 +33,7 @@ exports.userGroups_get = asyncHandler(async (req, res, next) => {
     });
   }
 });
+
 exports.groups_create_get = asyncHandler(async (req, res, next) => {
   res.render("group_form", {
     title: "Create a Group",
@@ -49,15 +55,17 @@ exports.groups_create_post = [
       });
     }
 
-    const group = new Group({
+    const group = {
       name: req.body.groupName,
       secretKey: req.body.secretKey,
-      admin: req.user.id,
-      members: [req.user.id],
-    });
+      admin_id: req.user.id,
+      // members: [req.user.id],
+    };
 
     try {
-      await group.save();
+      // await group.save();
+      const group_id = await db.createGroup(group);
+      await db.addMembership(group_id, req.user.id);
       res.redirect("/");
     } catch (err) {
       return next(err);
@@ -66,33 +74,33 @@ exports.groups_create_post = [
 ];
 
 exports.verifySecretKey = asyncHandler(async (req, res, next) => {
-  const groupId = req.params.groupId;
+  const group_id = req.params.groupId;
   const secretKey = req.body.secretKey;
 
-  console.log(secretKey);
-
   try {
-    const group = await Group.findById(groupId);
-    const user = await User.findById(req.user.id);
+    // const group = await Group.findById(groupId);
+    const group = await db.getGroup(group_id);
+    const groupMembers = await db.getAllGroupMembers(group_id);
+    // const user = await User.findById(req.user.id);
 
     if (!group) {
       return res.status(404).json({ message: "Group not found" });
     }
 
-    if (group.secretKey !== secretKey) {
+    if (group.secret_key !== secretKey) {
       res.render("error", {
         title: "Error",
         message: "Invalid secret key",
         error: new Error("Invalid Secret key"),
       });
     } else {
-      if (!group.members.includes(req.user.id)) {
-        group.members.push(req.user.id);
-        user.groups.push(group._id);
-        await group.save();
-        await user.save();
-        console.log("reached");
-        res.redirect("/dashboard");
+      if (!groupMembers.includes(req.user.id)) {
+        // group.members.push(req.user.id);
+        // user.groups.push(group._id);
+        // await group.save();
+        // await user.save();
+        await db.addMembership(group_id, req.user.id);
+        res.redirect("/groups/" + group_id);
       } else {
         res
           .status(400)
@@ -106,7 +114,9 @@ exports.verifySecretKey = asyncHandler(async (req, res, next) => {
 });
 
 exports.groups_update_get = asyncHandler(async (req, res, next) => {
-  const group = await Group.findById(req.params.groupId);
+  // const group = await Group.findById(req.params.groupId);
+
+  const group = await db.getGroup(req.params.groupId);
   res.render("group_form", {
     group: group,
     title: "Update Group",
@@ -128,18 +138,17 @@ exports.groups_update_post = [
       });
     }
 
-    const oldInstance = await Group.findById(req.params.groupId);
+    // const oldInstance = await Group.findById(req.params.groupId);
+    const oldInstance = await db.getGroup(req.params.groupId);
 
-    const group = new Group({
+    const updated_group = {
       name: req.body.groupName,
-      secretKey: req.body.secretKey,
-      admin: oldInstance.admin,
-      members: oldInstance.members,
-      _id: req.params.groupId,
-    });
+      secret_key: req.body.secretKey,
+    };
 
     try {
-      await Group.findByIdAndUpdate(req.params.groupId, group);
+      // await Group.findByIdAndUpdate(req.params.groupId, group);
+      await db.updateGroup(updated_group, req.params.groupId);
       res.redirect("/");
     } catch (err) {
       return next(err);
@@ -150,32 +159,35 @@ exports.groups_update_post = [
 exports.group_get = asyncHandler(async (req, res, next) => {
   // get the default group and its message and based on it the user is present in the members list of the group then show them message details
 
-  const default_group = await Group.findById(req.params.groupId);
+  // const default_group = await Group.findById(req.params.groupId);
   // to create message with the correct group id
+  const group = await db.getGroup(req.params.groupId);
 
-  const messages = await Message.find({ group: default_group._id })
-    .populate("author")
-    .exec();
+  // const messages = await Message.find({ group: default_group._id })
+  //   .populate("author")
+  //   .exec();
+  const messages = await db.getGroupsMessages(group.id);
 
   let added;
 
   try {
-    added = await Group.findOne({
-      _id: default_group,
-      members: req.user,
-    });
+    // added = await Group.findOne({
+    //   _id: default_group,
+    //   members: req.user,
+    // });
+    added = await db.checkMembership(group.id, req.user.id);
   } catch (err) {
     return next(err);
   }
 
-  let admin = default_group.admin.includes(req.user.id) ? true : false;
+  // let admin = default_group.admin.includes(req.user.id) ? true : false;
+  let admin = group.admin_id === req.user.id;
 
   res.render("group_page", {
     currentUser: req.user,
-    groupName: default_group.name,
     messages: messages,
-    group: default_group,
-    added: added ? true : false,
+    group: group,
+    added: added,
     admin: admin,
   });
 });

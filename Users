@@ -1,0 +1,543 @@
+\password sarfi07
+grant all privilages on database sarfi07 to sarfi07
+\q
+/l
+CREATE DATABASE top_users;
+/l
+CREATE DATABASE top_users;
+clear
+\q
+CREATE DATABASE top_users;
+\l
+\c top_users
+top_users=#
+CREATE TABLE usernames (
+id integer primary key generated always as identity, username varchar (255) )
+\d
+CREATE TABLE usernames (
+   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+   username VARCHAR ( 255 ) 
+);
+CREATE TABLE usernames (
+   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+   username VARCHAR ( 255 ) 
+);
+\d
+INSERT INTO usernames (username)
+VALUES ('Mao'), ('nevz'), ('Lofty');
+select * from usernames;
+drop table usernames
+\d
+\d
+\d
+\l
+select * from usernames
+\l
+select * from usernames
+\dt
+select * froom usernames
+DROP TABLE usernames
+DROP TABLE usernames;
+DROP TABLE usernames;
+\1
+\q
+\l
+\l
+CREATE DATABASE project_inventory_application
+\l
+\l
+CREATE DATABASE project_inventory_application;
+CREATE DATABASE project_inventory_application;
+\l
+\c project_inventory_application 
+CREATE TABLE Category (
+CAafasdf
+;
+sdfas;
+clear
+=
+aadsf;erwr
+exit
+\q
+\c project_inventory_application 
+\q
+\l
+\c project_inventory_application 
+\t
+\t
+\q
+\password
+\password
+\c project_inventory_application 
+\l
+\t
+\t
+\c
+\d
+drop table *
+\d
+drop table item
+;
+drop table *;
+;
+del;
+drop table *;
+drop table category;
+drop database project_inventory_application 
+\l
+;
+\l
+create database project_inventory_application
+;
+\c project_inventory_application 
+[200~INSERT INTO category (name, description) 
+VALUES 
+    ('Electronics', 'Devices and gadgets'),
+    ('Clothing', 'Apparel and accessories'),
+    ('Home Appliances', 'Household machines');
+INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ("Men's Clothing", 'Apparel for men', 2),  
+    ("Women's Clothing", 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);  
+INSERT INTO item (name, description, price, imgUrl, size, quantity, brand, color, category_id, subCategory_id) 
+VALUES 
+    ('iPhone 13', 'Latest Apple smartphone', 999, 'http://imageurl.com/iphone13', 'N/A', 50, 'Apple', 'Black', 1, 1), 
+    ('MacBook Pro', 'High-performance laptop', 1999, 'http://imageurl.com/macbookpro', '13-inch', 30, 'Apple', 'Space Gray', 1, 2),
+    ("Men's Jacket", 'Warm winter jacket', 120, 'http://imageurl.com/mensjacket', 'L', 100, 'North Face', 'Blue', 2, 3), 
+    ("Women's Dress", 'Elegant evening dress', 150, 'http://imageurl.com/womensdress', 'M', 80, 'Zara', 'Red', 2, 4), 
+    ('Microwave Oven', 'High-efficiency microwave', 300, 'http://imageurl.com/microwave', 'N/A', 20, 'Samsung', 'Silver', 3, 5);
+INSERT INTO category (name, description) 
+VALUES 
+    ('Electronics', 'Devices and gadgets'),
+    ('Clothing', 'Apparel and accessories'),
+    ('Home Appliances', 'Household machines');
+
+INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ("Men's Clothing", 'Apparel for men', 2),  
+    ("Women's Clothing", 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);  
+
+INSERT INTO item (name, description, price, imgUrl, size, quantity, brand, color, category_id, subCategory_id) 
+VALUES 
+    ('iPhone 13', 'Latest Apple smartphone', 999, 'http://imageurl.com/iphone13', 'N/A', 50, 'Apple', 'Black', 1, 1), 
+    ('MacBook Pro', 'High-performance laptop', 1999, 'http://imageurl.com/macbookpro', '13-inch', 30, 'Apple', 'Space Gray', 1, 2),
+    ("Men's Jacket", 'Warm winter jacket', 120, 'http://imageurl.com/mensjacket', 'L', 100, 'North Face', 'Blue', 2, 3), 
+    ("Women's Dress", 'Elegant evening dress', 150, 'http://imageurl.com/womensdress', 'M', 80, 'Zara', 'Red', 2, 4), 
+    ('Microwave Oven', 'High-efficiency microwave', 300, 'http://imageurl.com/microwave', 'N/A', 20, 'Samsung', 'Silver', 3, 5);
+\d
+select * from category
+INSERT INTO category (name, description) 
+VALUES 
+    ('Electronics', 'Devices and gadgets'),
+    ('Clothing', 'Apparel and accessories'),
+    ('Home Appliances', 'Household machines');
+insert into category(name, description) values('foo', 'bar')
+;
+delete * from category;
+delete * from category where id=1
+;
+delete from category where id=1
+;
+select * from category;
+select * from item;
+select * from subCategory;
+..
+cd
+quit
+\q
+whoami
+\l
+\c
+\c
+\d
+\c
+l
+\l
+\c project_inventory_application 
+select * from category;
+select * from category;
+drop table category;
+drop table category casecade;
+drop table category cascade;
+CREATE TABLE category (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL
+);
+select * from category;
+INSERT INTO category (name, description) 
+VALUES 
+    ('Electronics', 'Devices and gadgets'),
+    ('Clothing', 'Apparel and accessories'),
+    ('Home Appliances', 'Household machines');
+select * from category;
+INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ("Men's Clothing", 'Apparel for men', 2),  
+    ("Women's Clothing", 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);
+[200~INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ("Mens Clothing", 'Apparel for men', 2),  
+    ("Womens Clothing", 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);
+INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ("Mens Clothing", 'Apparel for men', 2),  
+    ("Womens Clothing", 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);  
+INSERT INTO subCategory (name, description, category_id) 
+VALUES 
+    ('Smartphones', 'Mobile devices', 1),  
+    ('Laptops', 'Portable computers', 1),  
+    ('Mens Clothing', 'Apparel for men', 2),  
+    ('Womens Clothing', 'Apparel for women', 2),  
+    ('Kitchen Appliances', 'Devices for kitchen', 3);  
+INSERT INTO item (name, description, price, imgUrl, size, quantity, brand, color, category_id, subCategory_id) 
+VALUES 
+    ('iPhone 13', 'Latest Apple smartphone', 999, 'http://imageurl.com/iphone13', 'N/A', 50, 'Apple', 'Black', 1, 1), 
+    ('MacBook Pro', 'High-performance laptop', 1999, 'http://imageurl.com/macbookpro', '13-inch', 30, 'Apple', 'Space Gray', 1, 2),
+    ('Men's Jacket', 'Warm winter jacket', 120, 'http://imageurl.com/mensjacket', 'L', 100, 'North Face', 'Blue', 2, 3), 
+    ('Women's Dress', 'Elegant evening dress', 150, 'http://imageurl.com/womensdress', 'M', 80, 'Zara', 'Red', 2, 4), 
+    ('Microwave Oven', 'High-efficiency microwave', 300, 'http://imageurl.com/microwave', 'N/A', 20, 'Samsung', 'Silver', 3, 5);
+INSERT INTO item (name, description, price, imgUrl, size, quantity, brand, color, category_id, subCategory_id) 
+VALUES 
+    ('iPhone 13', 'Latest Apple smartphone', 999, 'http://imageurl.com/iphone13', 'N/A', 50, 'Apple', 'Black', 1, 1), 
+    ('MacBook Pro', 'High-performance laptop', 1999, 'http://imageurl.com/macbookpro', '13-inch', 30, 'Apple', 'Space Gray', 1, 2),
+    ('Mens Jacket', 'Warm winter jacket', 120, 'http://imageurl.com/mensjacket', 'L', 100, 'North Face', 'Blue', 2, 3), 
+    ('Womens Dress', 'Elegant evening dress', 150, 'http://imageurl.com/womensdress', 'M', 80, 'Zara', 'Red', 2, 4), 
+    ('Microwave Oven', 'High-efficiency microwave', 300, 'http://imageurl.com/microwave', 'N/A', 20, 'Samsung', 'Silver', 3, 5);
+\q
+\c project_inventory_application 
+select count(*) from category;
+select * from category sort by name
+;
+select * from category order by name
+;
+\q
+\c project_inventory_application 
+SELECT * FROM item WHERE id=($1) JOIN category ON item.category_id=category.id JOIN subCategory ON item.subCategory_id=subCategory.id;
+SELECT * FROM item WHERE id=($1) INNER JOIN category ON item.category_id=category.id INNER JOIN subCategory ON item.subCategory_id=subCategory.id;
+SELECT * FROM item WHERE id=1 INNER JOIN category ON item.category_id=category.id INNER JOIN subCategory ON item.subCategory_id=subCategory.id;
+SELECT * FROM item JOIN category ON item.category_id=category.id JOIN subCategory ON item.subCategory_id=subCategory.id WHERE id=1;
+SELECT * FROM item JOIN category ON item.category_id=category.id JOIN subCategory ON item.subCategory_id=subCategory.id WHERE item.id=1;
+SELECT * FROM item JOIN category ON item.category_id=category.id JOIN subCategory ON item.subCategory_id=subCategory.id WHERE item.id=1;
+\c project_inventory_application 
+select imgUrl from item id=11;
+select imgUrl from item where id=11;
+\l
+CREATE TABLE users (
+   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+   username VARCHAR ( 255 ),
+   password VARCHAR ( 255 )
+);
+\l
+\c top_users
+CREATE TABLE users (
+   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+   username VARCHAR ( 255 ),
+   password VARCHAR ( 255 )
+);
+\l
+\d
+\q
+\c top_users 
+\d
+schma session
+schema session
+\dn
+\d session
+\d
+exit
+exit
+quit
+\q
+\c project_members_only 
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+);
+
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE "GroupMembers" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+);
+
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+);
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+)
+
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMembers" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+)
+
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+);
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+)
+
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMembers" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+)
+
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+)
+CREATE TABLE "Messages" (
+    id SERIAL PRIMARY KEY,
+    message TEXT NOT NULL,
+    author_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+\c project_members_only 
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+)
+
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE "GroupMembers" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+)
+
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+)
+
+CREATE TABLE "Messages" (
+    id SERIAL PRIMARY KEY,
+    message TEXT NOT NULL,
+    author_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+;
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+);
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE "GroupMemberships" (
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, group_id)
+);
+CREATE TABLE "GroupMembers" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+);
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+);
+CREATE TABLE "Messages" (
+    id SERIAL PRIMARY KEY,
+    message TEXT NOT NULL,
+    author_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE "GroupMessages" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    message_id INT REFERENCES "Messages"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, message_id)
+);
+drop table *
+;
+q
+\q
+drop database project_members_only;
+create database project_members_only
+;
+\c project_members_only 
+CREATE TABLE "Users" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL CHECK (length(first_name) >= 1),
+    last_name VARCHAR(255) NOT NULL CHECK (length(last_name) >= 1),
+    username VARCHAR(255) NOT NULL UNIQUE CHECK (length(username) >= 4),
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_username ON "Users"(username);
+
+CREATE TABLE "Groups" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    admin_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    secret_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_group_name ON "Groups"(name);
+
+CREATE TABLE "GroupMemberships" (
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    user_id INT REFERENCES "Users"(id) ON DELETE CASCADE,
+    PRIMARY KEY (group_id, user_id)
+);
+
+CREATE INDEX idx_group_user ON "GroupMemberships"(group_id, user_id);
+
+CREATE TABLE "Messages" (
+    id SERIAL PRIMARY KEY,
+    message TEXT NOT NULL,
+    author_id INT REFERENCES "Users"(id) ON DELETE SET NULL,
+    group_id INT REFERENCES "Groups"(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_message_group ON "Messages"(group_id);
+CREATE INDEX idx_message_author ON "Messages"(author_id);
+\q
+\c project_members_only 
+\d
+\s Users

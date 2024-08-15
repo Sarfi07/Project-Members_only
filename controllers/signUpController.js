@@ -2,6 +2,8 @@ const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const pool = require("../db/pool");
+const db = require("../db/queries");
 
 exports.signUp_get = asyncHandler(async (req, res, next) => {
   res.render("signUpForm", {
@@ -35,12 +37,12 @@ exports.signUp_post = [
         return next(err);
       }
 
-      const user = new User({
+      const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
         password: hassedPassword,
-      });
+      };
 
       if (!errors.isEmpty()) {
         res.render("signUpForm", {
@@ -48,7 +50,7 @@ exports.signUp_post = [
         });
       } else {
         try {
-          await user.save();
+          await db.insertUser(user);
           res.redirect("/login");
         } catch (err) {
           return next(err);

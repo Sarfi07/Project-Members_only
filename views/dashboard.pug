@@ -5,7 +5,7 @@ block content
     // Group Name
     .group-name-container.text-center.py-4.mb-6
       h2.text-4xl.font-bold.text-white.inline-block.py-2.px-4.bg-gradient-to-r.from-purple-500.to-indigo-600.rounded-lg.shadow-lg
-        = groupName
+        = group.name
       if admin
        .p-10
          a(href=`/groups/${group.id}/update` class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded") Update Group
@@ -15,27 +15,27 @@ block content
       
     .messages
       each message in messages
-        if message.author._id.toString() === currentUser._id.toString()
+        if message.author_id.toString() === currentUser.id.toString()
           // Sent messages
           .message.flex.justify-end.mb-2
             .message-bubble.bg-green-500.text-white.p-2.rounded-lg.max-w-xs
               .message-content= message.message
-              .message-timestamp.text-xs.mt-1.text-right.text-gray-300= new Date(message.createdAt).toLocaleTimeString()
+              .message-timestamp.text-xs.mt-1.text-right.text-gray-300= new Date(message.created_at).toLocaleTimeString()
             if admin
               // Delete button for admin
-              form(action=`/message/${message._id}/delete` method="POST" class="ml-2")
+              form(action=`/message/${message.id}/delete` method="POST" class="ml-2")
                 button(type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline") Delete
         else
           .message.flex.justify-start.mb-2
             .message-bubble.bg-white.text-gray-800.p-2.rounded-lg.max-w-xs.shadow
               if added
-                .message-sender.font-bold= message.author.firstName
+                .message-sender.font-bold= message.author_firstName
               .message-content= message.message
               if added
-                .message-timestamp.text-xs.mt-1.text-left.text-gray-500= new Date(message.createdAt).toLocaleTimeString()
+                .message-timestamp.text-xs.mt-1.text-left.text-gray-500= new Date(message.created_at).toLocaleTimeString()
             if admin
               // Delete button for admin
-              form(action=`/message/${message._id}/delete` method="POST" class="ml-2")
+              form(action=`/message/${message.id}/delete` method="POST" class="ml-2")
                 button(type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline") Delete
 
     // Message Typing Box

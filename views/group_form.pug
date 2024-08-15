@@ -9,7 +9,7 @@ block content
         input#groupName(type="text" name="groupName" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value=(group ? group.name : ''))
       .mb-4
         label.block.text-gray-700.text-sm.font-bold.mb-2(for="secretKey") Secret Key
-        input#secretKey(type="text" name="secretKey" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value=(group ? group.secretKey : ''))
+        input#secretKey(type="text" name="secretKey" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value=(group ? group.secret_key : ''))
       .mb-4
         label.block.text-gray-700.text-sm.font-bold.mb-2(for="isAdmin")
           input#isAdmin(type="checkbox" disabled checked name="isAdmin" class="mr-2 leading-tight focus:outline-none focus:shadow-outline")
