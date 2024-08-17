@@ -17,13 +17,13 @@ const isAuthenticated = require("./utils/checkAuthentication");
 
 var app = express();
 
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
-const mongodb = process.env.mongodb_uri;
+// const mongoose = require("mongoose");
+// mongoose.set("strictQuery", false);
+// const mongodb = process.env.mongodb_uri;
 
-mongoose.connect(mongodb);
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "mongo connection error"));
+// mongoose.connect(mongodb);
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "mongo connection error"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
