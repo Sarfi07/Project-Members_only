@@ -11,6 +11,10 @@ block content
         each group in groups
           li(style="background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; align-items: center;")
             a(href=`/groups/${group.id}`, style="font-size: 1.25rem; font-weight: 600; color: #1D4ED8; text-decoration: none; margin-bottom: 16px;")= group.name
+              if group.admin_id === currentUser.id 
+                // Delete button for admin
+                form(action=`/groups/${group.id}/delete` method="POST" class="ml-2")
+                  button(type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline") Delete
     else
       p(style="text-align: center; color: #6B7280; font-size: 1.125rem;") You have no groups. Create or Join One.
 

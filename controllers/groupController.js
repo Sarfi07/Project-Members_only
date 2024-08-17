@@ -191,3 +191,13 @@ exports.group_get = asyncHandler(async (req, res, next) => {
     admin: admin,
   });
 });
+
+exports.group_delete = asyncHandler(async (req, res) => {
+  // double checking authorisation
+  const group = await db.getGroup(req.params.groupId);
+
+  if (group.admin_id === req.user.id) {
+    await db.deleteGroup(req.params.groupId);
+    res.redirect("/groups/userGroups");
+  }
+});

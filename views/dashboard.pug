@@ -20,7 +20,8 @@ block content
           .message.flex.justify-end.mb-2
             .message-bubble.bg-green-500.text-white.p-2.rounded-lg.max-w-xs
               .message-content= message.message
-              .message-timestamp.text-xs.mt-1.text-right.text-gray-300= new Date(message.created_at).toLocaleTimeString()
+              .message-timestamp.text-xs.mt-1.text-right.text-gray-300= message.created_at
+
             if admin
               // Delete button for admin
               form(action=`/message/${message.id}/delete` method="POST" class="ml-2")
@@ -29,10 +30,11 @@ block content
           .message.flex.justify-start.mb-2
             .message-bubble.bg-white.text-gray-800.p-2.rounded-lg.max-w-xs.shadow
               if added
-                .message-sender.font-bold= message.author_firstName
+                .message-sender.font-bold= message.user_first_name
               .message-content= message.message
               if added
-                .message-timestamp.text-xs.mt-1.text-left.text-gray-500= new Date(message.created_at).toLocaleTimeString()
+                .message-timestamp.text-xs.mt-1.text-right.text-gray-300= message.created_at
+
             if admin
               // Delete button for admin
               form(action=`/message/${message.id}/delete` method="POST" class="ml-2")

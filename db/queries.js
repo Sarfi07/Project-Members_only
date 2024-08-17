@@ -1,4 +1,5 @@
 const pool = require("./pool");
+const { format } = require("date-fns");
 
 async function insertUser(user) {
   await pool.query(
@@ -30,7 +31,7 @@ async function getAllGroups() {
 
 async function getUserGroups(user_id) {
   const { rows } = await pool.query(
-    "SELECT groups.id, groups.name FROM groupMemberships JOIN groups on group_id = groups.id WHERE user_id=$1",
+    "SELECT groups.id, groups.name, groups.admin_id FROM groupMemberships JOIN groups on group_id = groups.id WHERE user_id=$1",
     [user_id]
   );
 
@@ -42,11 +43,20 @@ async function getGroup(id) {
   return rows[0];
 }
 
+async function deleteGroup(id) {
+  await pool.query("DELETE FROM groups WHERE id=($1)", [id]);
+}
+
 async function getGroupsMessages(group_id) {
   const { rows } = await pool.query(
-    "SELECT messages.*, users.id as user_id, users.first_name as user_first_name FROM messages JOIN users ON messages.author_id = users.id WHERE group_id=($1)",
+    "SELECT messages.*, users.id as user_id, users.first_name as user_first_name FROM messages JOIN users ON messages.author_id = users.id WHERE group_id=($1) ORDER BY messages.created_at",
     [group_id]
   );
+
+  rows.forEach((row) => {
+    const formattedDate = format(new Date(row.created_at), "PPpp");
+    row.created_at = formattedDate;
+  });
 
   return rows;
 }
@@ -96,6 +106,22 @@ async function getAllGroupMembers(group_id) {
   return rows;
 }
 
+async function createMessage(messageObj) {
+  await pool.query(
+    "INSERT INTO messages (message, author_id, group_id) VALUES ($1, $2, $3)",
+    [messageObj.message, messageObj.author_id, messageObj.group_id]
+  );
+}
+
+async function deleteMessage(id) {
+  const { rows } = await pool.query(
+    "DELETE FROM messages WHERE id=($1) RETURNING group_id",
+    [id]
+  );
+
+  return rows[0].group_id;
+}
+
 module.exports = {
   insertUser,
   findUser,
@@ -103,10 +129,13 @@ module.exports = {
   getAllGroups,
   getUserGroups,
   getGroup,
+  deleteGroup,
   getGroupsMessages,
   createGroup,
   updateGroup,
   checkMembership,
   addMembership,
   getAllGroupMembers,
+  createMessage,
+  deleteMessage,
 };
