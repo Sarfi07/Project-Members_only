@@ -1,4 +1,5 @@
 const { Client } = require("pg");
+require("dotenv").config();
 
 const SQL = `
 CREATE TABLE users (
@@ -44,21 +45,20 @@ CREATE TABLE messages (
 CREATE INDEX idx_message_group ON messages(group_id);
 CREATE INDEX idx_message_author ON messages (author_id);
 
-INSERT INTO users(first_name, last_name, username, password) VALUES(foo, bar, baz);
+INSERT INTO users(first_name, last_name, username, password) VALUES('Tanjiro', 'Kamado', 'tanjiro', '$2a$10$lbllrjLhsazVmd8cCi7SSOH6l9RStfKm9dlGNd21g71i58xsbksM6');
 
-INSERT INTO groups (name, secret_key, admin_id) VALUES(foo, bar, baz);
+INSERT INTO groups (name, secret_key, admin_id) VALUES('Sun', 'itIsStart', 1);
 
-INSERT INTO messages (message, author_id, group_id) VALUES (foo, bar, baz)
+INSERT INTO messages (message, author_id, group_id) VALUES ('Hello my name is Sarfaroj!', 1, 1)
 
 `;
+
+console.log(process.env.CONNECTION_STRING);
 
 async function main() {
   console.log("Seeding...");
   const client = new Client({
-    user: process.env.user,
-    host: process.env.host,
-    database: process.env.database,
-    password: process.env.password,
+    connectionString: process.env.CONNECTION_STRING,
   });
 
   await client.connect();
